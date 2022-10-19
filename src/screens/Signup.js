@@ -1,61 +1,83 @@
-import {
-  Button,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
+import {useState} from 'react';
+import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import cover from '../assets/images/Vector.jpg';
+import {PrimaryButton} from '../components/Button';
+import Footer from '../components/Footer';
+import TitleCard from '../components/TitleCard';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
-export default function Login() {
+const Signup = () => {
+  const [formData, setFormData] = useState({
+    term: false,
+    firstName: '',
+    lastName: '',
+  });
+  const handleChange = (term, value) => {
+    const temp = {...formData};
+    if (term === 'term') {
+      setFormData({...temp, term: !temp.term});
+    }
+  };
   return (
     <View style={styles.container}>
       <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Zoho Integration by CedCommerce</Text>
-          <Text style={styles.subTitle}>
-            Sync multiple frameworks with Zoho CRM.
-          </Text>
-        </View>
+        <TitleCard />
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Sign In to your account</Text>
+          <Text style={styles.cardTitle}>Register/Create a new account</Text>
           <View style={styles.formField}>
-            <Text style={styles.formLabel}>Email/Username</Text>
+            <Text style={styles.formLabel}>First name</Text>
             <TextInput
-              placeholder="Enter email or username"
+              placeholder="Enter first name"
               style={styles.formInput}
             />
+          </View>
+          <View style={styles.formField}>
+            <Text style={styles.formLabel}>Last name</Text>
+            <TextInput placeholder="Enter last name" style={styles.formInput} />
+          </View>
+          <View style={styles.formField}>
+            <Text style={styles.formLabel}>Username</Text>
+            <TextInput placeholder="Enter username" style={styles.formInput} />
+          </View>
+          <View style={styles.formField}>
+            <Text style={styles.formLabel}>Email</Text>
+            <TextInput placeholder="Enter email" style={styles.formInput} />
           </View>
           <View style={styles.formField}>
             <Text style={styles.formLabel}>Password</Text>
             <TextInput placeholder="Enter password" style={styles.formInput} />
           </View>
-          <View style={styles.forgetContainer}>
-            <Text style={styles.forget}>Forget Password ?</Text>
-          </View>
-          <View style={styles.button}>
-            <Button
-              // onPress={onPressLearnMore}
-              title="Sign In"
-              color={COLORS.blue}
-              accessibilityLabel="Learn more about this purple button"
+          <View style={styles.formField}>
+            <Text style={styles.formLabel}>Confirm password</Text>
+            <TextInput
+              placeholder="Enter confirm password"
+              style={styles.formInput}
             />
           </View>
+          <View style={styles.box}>
+            <CheckBox
+              value={formData?.term}
+              onValueChange={newValue => handleChange('term', newValue)}
+            />
+            <Text>
+              Accecept Terms & Conditions.
+              <Text style={styles.linkBtn}> Read Policy </Text>
+            </Text>
+          </View>
+          <PrimaryButton />
           <View style={styles.infoTitle}>
             <Text style={styles.info}>
-              Register here if your want to create new account
+              <Text style={styles.linkBtn}>Sign in here </Text>
+              if you already have account
             </Text>
           </View>
         </View>
-        <View style={styles.footerContainer}>
-          <Text style={styles.footer}>A CedCommerce Inc Product 2022.</Text>
-        </View>
+        <Footer />
       </ImageBackground>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -90,9 +112,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     borderRadius: 4,
   },
-  // card design
   card: {
-    // height: 400,
     backgroundColor: COLORS.while,
     margin: 10,
     borderRadius: 4,
@@ -107,6 +127,7 @@ const styles = StyleSheet.create({
   formField: {
     paddingHorizontal: 16,
     paddingTop: 10,
+    color: COLORS.black,
   },
   formLabel: {
     fontFamily: FONTS.semiBold,
@@ -131,11 +152,15 @@ const styles = StyleSheet.create({
     fontSize: SIZES.small,
     color: 'blue',
   },
-
-  //button
-  button: {
+  linkBtn: {
+    color: 'blue',
+    fontFamily: FONTS.bold,
+  },
+  box: {
+    flexDirection: 'row',
     paddingHorizontal: 16,
-    paddingVertical: 20,
+    paddingTop: 10,
+    alignItems: 'center',
   },
   infoTitle: {
     paddingVertical: 20,
@@ -146,15 +171,6 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     fontSize: SIZES.small,
   },
-  //footer
-  footerContainer: {
-    paddingVertical: 50,
-    paddingBottom: 25,
-    alignItems: 'center',
-  },
-  footer: {
-    fontSize: SIZES.large,
-    color: COLORS.black,
-    fontFamily: FONTS.semiBold,
-  },
 });
+
+export default Signup;
