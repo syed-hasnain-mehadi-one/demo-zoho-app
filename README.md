@@ -1,2 +1,2 @@
 # demo-zoho-app
-learning app development 
+react native app for ios and android
