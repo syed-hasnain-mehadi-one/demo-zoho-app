@@ -1,16 +1,24 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {StyleSheet} from 'react-native';
+import ForgetPassword from './src/screens/ForgetPassword';
+import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
-// import Login from './src/screens/Login';
-// import ForgetPassword from './src/screens/ForgetPassword';
+
+const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container}>
-        {/* <Login /> */}
-        <Signup />
-        {/* <ForgetPassword /> */}
-      </ScrollView>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Forget" component={ForgetPassword} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 const styles = StyleSheet.create({

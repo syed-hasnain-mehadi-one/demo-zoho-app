@@ -1,13 +1,21 @@
 import CheckBox from '@react-native-community/checkbox';
 import {useState} from 'react';
-import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  ImageBackground,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import {FullSizeBtn} from '../components/Button';
 import Footer from '../components/Footer';
 import TitleCard from '../components/TitleCard';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
-const Signup = () => {
+const Signup = ({navigation}) => {
   const [formData, setFormData] = useState({
     term: false,
     firstName: '',
@@ -20,62 +28,75 @@ const Signup = () => {
     }
   };
   return (
-    <View style={styles.container}>
-      <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
-        <TitleCard />
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Register/Create a new account</Text>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>First name</Text>
-            <TextInput
-              placeholder="Enter first name"
-              style={styles.formInput}
-            />
+    <ScrollView>
+      <View style={styles.container}>
+        <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
+          <TitleCard />
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Register/Create a new account</Text>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>First name</Text>
+              <TextInput
+                placeholder="Enter first name"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Last name</Text>
+              <TextInput
+                placeholder="Enter last name"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Username</Text>
+              <TextInput
+                placeholder="Enter username"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Email</Text>
+              <TextInput placeholder="Enter email" style={styles.formInput} />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Password</Text>
+              <TextInput
+                placeholder="Enter password"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Confirm password</Text>
+              <TextInput
+                placeholder="Enter confirm password"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.box}>
+              <CheckBox
+                value={formData?.term}
+                onValueChange={newValue => handleChange('term', newValue)}
+              />
+              <Text style={styles.terms}>
+                Accecept Terms & Conditions.
+                <Text style={styles.linkBtn}> Read Policy </Text>
+              </Text>
+            </View>
+            <FullSizeBtn label="Create account" />
+            <View style={styles.infoTitle}>
+              <Text style={styles.info}>
+                <Pressable onPress={() => navigation.navigate('Login')}>
+                  <Text style={styles.linkBtn}>Sign in here </Text>
+                </Pressable>
+                <Text>if you already have account</Text>
+              </Text>
+            </View>
           </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Last name</Text>
-            <TextInput placeholder="Enter last name" style={styles.formInput} />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Username</Text>
-            <TextInput placeholder="Enter username" style={styles.formInput} />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Email</Text>
-            <TextInput placeholder="Enter email" style={styles.formInput} />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Password</Text>
-            <TextInput placeholder="Enter password" style={styles.formInput} />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Confirm password</Text>
-            <TextInput
-              placeholder="Enter confirm password"
-              style={styles.formInput}
-            />
-          </View>
-          <View style={styles.box}>
-            <CheckBox
-              value={formData?.term}
-              onValueChange={newValue => handleChange('term', newValue)}
-            />
-            <Text style={styles.terms}>
-              Accecept Terms & Conditions.
-              <Text style={styles.linkBtn}> Read Policy </Text>
-            </Text>
-          </View>
-          <FullSizeBtn label="Create account" />
-          <View style={styles.infoTitle}>
-            <Text style={styles.info}>
-              <Text style={styles.linkBtn}>Sign in here </Text>
-              if you already have account
-            </Text>
-          </View>
-        </View>
-        <Footer />
-      </ImageBackground>
-    </View>
+          <Footer />
+        </ImageBackground>
+      </View>
+    </ScrollView>
   );
 };
 

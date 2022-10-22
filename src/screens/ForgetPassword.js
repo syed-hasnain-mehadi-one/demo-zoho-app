@@ -1,6 +1,7 @@
 import {
   Image,
   ImageBackground,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -11,15 +12,17 @@ import cover from '../assets/images/Vector.jpg';
 import {FullSizeBtn} from '../components/Button';
 import TitleCard from '../components/TitleCard';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
-const ForgetPassword = () => {
+const ForgetPassword = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={cover} style={styles.image}>
         <TitleCard />
         <View style={styles.card}>
-          <View style={styles.back}>
-            <Image source={back} style={styles.backImg} />
-          </View>
+          <Pressable onPress={() => navigation.navigate('Login')}>
+            <View style={styles.back}>
+              <Image source={back} style={styles.backImg} />
+            </View>
+          </Pressable>
           <Text style={styles.cardTitle}>
             Enter your email to get the password reset link.
           </Text>

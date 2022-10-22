@@ -1,59 +1,64 @@
 import {
-  Button,
   ImageBackground,
+  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   View,
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
+import {FullSizeBtn} from '../components/Button';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Zoho Integration by CedCommerce</Text>
-          <Text style={styles.subTitle}>
-            Sync multiple frameworks with Zoho CRM.
-          </Text>
-        </View>
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Sign In to your account</Text>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Email/Username</Text>
-            <TextInput
-              placeholder="Enter email or username"
-              style={styles.formInput}
-            />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Password</Text>
-            <TextInput placeholder="Enter password" style={styles.formInput} />
-          </View>
-          <View style={styles.forgetContainer}>
-            <Text style={styles.forget}>Forget Password ?</Text>
-          </View>
-          <View style={styles.button}>
-            <Button
-              // onPress={onPressLearnMore}
-              title="Sign In"
-              color={COLORS.blue}
-              accessibilityLabel="Learn more about this purple button"
-            />
-          </View>
-          <View style={styles.infoTitle}>
-            <Text style={styles.info}>
-              Register here if your want to create new account
+    <ScrollView>
+      <View style={styles.container}>
+        <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Zoho Integration by CedCommerce</Text>
+            <Text style={styles.subTitle}>
+              Sync multiple frameworks with Zoho CRM.
             </Text>
           </View>
-        </View>
-        <View style={styles.footerContainer}>
-          <Text style={styles.footer}>A CedCommerce Inc Product 2022.</Text>
-        </View>
-      </ImageBackground>
-    </View>
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Sign In to your account</Text>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Email/Username</Text>
+              <TextInput
+                placeholder="Enter email or username"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.formField}>
+              <Text style={styles.formLabel}>Password</Text>
+              <TextInput
+                placeholder="Enter password"
+                style={styles.formInput}
+              />
+            </View>
+            <View style={styles.forgetContainer}>
+              <Pressable onPress={() => navigation.navigate('Forget')}>
+                <Text style={styles.forget}>Forget Password ?</Text>
+              </Pressable>
+            </View>
+            <FullSizeBtn label="Sign In" />
+            <View style={styles.infoTitle}>
+              <Text style={styles.info}>
+                <Pressable onPress={() => navigation.navigate('Signup')}>
+                  <Text style={styles.linkBtn}>Register here </Text>
+                </Pressable>
+                <Text>if your want to create new account</Text>
+              </Text>
+            </View>
+          </View>
+          <View style={styles.footerContainer}>
+            <Text style={styles.footer}>A CedCommerce Inc Product 2022.</Text>
+          </View>
+        </ImageBackground>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -103,6 +108,10 @@ const styles = StyleSheet.create({
     color: COLORS.black,
     padding: 16,
   },
+  linkBtn: {
+    color: 'blue',
+    fontFamily: FONTS.bold,
+  },
   //form field
   formField: {
     paddingHorizontal: 16,
@@ -145,6 +154,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.semiBold,
     color: COLORS.black,
     fontSize: SIZES.small,
+    alignItems: 'center',
   },
   //footer
   footerContainer: {
