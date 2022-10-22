@@ -2,7 +2,7 @@ import CheckBox from '@react-native-community/checkbox';
 import {useState} from 'react';
 import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import cover from '../assets/images/Vector.jpg';
-import {PrimaryButton} from '../components/Button';
+import {FullSizeBtn} from '../components/Button';
 import Footer from '../components/Footer';
 import TitleCard from '../components/TitleCard';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
@@ -60,12 +60,12 @@ const Signup = () => {
               value={formData?.term}
               onValueChange={newValue => handleChange('term', newValue)}
             />
-            <Text>
+            <Text style={styles.terms}>
               Accecept Terms & Conditions.
               <Text style={styles.linkBtn}> Read Policy </Text>
             </Text>
           </View>
-          <PrimaryButton />
+          <FullSizeBtn label="Create account" />
           <View style={styles.infoTitle}>
             <Text style={styles.info}>
               <Text style={styles.linkBtn}>Sign in here </Text>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontSize: SIZES.large,
-    color: '#4e4f52',
+    color: COLORS.lightBlack,
     fontFamily: FONTS.semiBold,
   },
   formContainer: {
@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.while,
     margin: 10,
     borderRadius: 4,
+    color: COLORS.black,
   },
   cardTitle: {
     fontFamily: FONTS.extraBold,
@@ -141,6 +142,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     size: SIZES.medium,
     fontFamily: FONTS.semiBold,
+    color: COLORS.black,
   },
   forgetContainer: {
     paddingHorizontal: 16,
@@ -151,6 +153,9 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.bold,
     fontSize: SIZES.small,
     color: 'blue',
+  },
+  terms: {
+    color: COLORS.black,
   },
   linkBtn: {
     color: 'blue',

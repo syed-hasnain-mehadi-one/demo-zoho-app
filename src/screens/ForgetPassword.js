@@ -38,8 +38,6 @@ export default ForgetPassword;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
-    alignItems: 'center',
   },
   image: {
     flex: 1,
@@ -82,7 +80,6 @@ const styles = StyleSheet.create({
   formContainer: {
     backgroundColor: '#fff',
     height: 450,
-    margin: 16,
     borderColor: 'red',
     border: 1,
     shadowColor: 'black',
@@ -117,5 +114,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     size: SIZES.medium,
     fontFamily: FONTS.semiBold,
+    color: COLORS.black,
   },
 });
