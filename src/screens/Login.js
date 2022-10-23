@@ -46,9 +46,11 @@ export default function Login({navigation}) {
             <FullSizeBtn label="Sign In" />
             <View style={styles.infoTitle}>
               <Text style={styles.info}>
-                <Pressable onPress={() => navigation.navigate('Signup')}>
-                  <Text style={styles.linkBtn}>Register here </Text>
-                </Pressable>
+                <Text
+                  style={styles.linkBtn}
+                  onPress={() => navigation.navigate('Signup')}>
+                  Sign up{' '}
+                </Text>
                 <Text>if your want to create new account</Text>
               </Text>
             </View>
@@ -68,8 +70,9 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    opacity: 0.6,
+    opacity: 0.8,
     backgroundColor: '#a9acb2',
+    resizeMode: 'stretch',
   },
   titleContainer: {
     paddingTop: 120,
@@ -129,6 +132,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     size: SIZES.medium,
     fontFamily: FONTS.semiBold,
+    color: COLORS.black,
   },
   forgetContainer: {
     paddingHorizontal: 16,
@@ -158,9 +162,11 @@ const styles = StyleSheet.create({
   },
   //footer
   footerContainer: {
+    flex: 1,
     paddingVertical: 50,
     paddingBottom: 25,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   footer: {
     fontSize: SIZES.large,
