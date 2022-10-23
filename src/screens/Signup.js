@@ -2,7 +2,6 @@ import CheckBox from '@react-native-community/checkbox';
 import {useState} from 'react';
 import {
   ImageBackground,
-  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -86,10 +85,12 @@ const Signup = ({navigation}) => {
             <FullSizeBtn label="Create account" />
             <View style={styles.infoTitle}>
               <Text style={styles.info}>
-                <Pressable onPress={() => navigation.navigate('Login')}>
-                  <Text style={styles.linkBtn}>Sign in here </Text>
-                </Pressable>
-                <Text>if you already have account</Text>
+                <Text
+                  style={styles.linkBtn}
+                  onPress={() => navigation.navigate('Login')}>
+                  Sign in{' '}
+                </Text>
+                <Text>here if you already have account</Text>
               </Text>
             </View>
           </View>
@@ -106,8 +107,9 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    opacity: 0.6,
+    opacity: 0.8,
     backgroundColor: '#a9acb2',
+    resizeMode: 'stretch',
   },
   titleContainer: {
     paddingTop: 120,
