@@ -1,3 +1,5 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useState} from 'react';
 import {
   ImageBackground,
   Pressable,
@@ -13,6 +15,18 @@ import Footer from '../components/shared/Footer';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
 export default function Login({navigation}) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const handleLogin = async () => {
+    console.log('CCCC');
+    try {
+      if (!email || !password) return 0;
+      const res = await AsyncStorage.setItem('authData', 'isLogin');
+      console.log('res', res);
+    } catch (e) {
+      console.log('error', e);
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -30,6 +44,7 @@ export default function Login({navigation}) {
               <TextInput
                 placeholder="Enter email or username"
                 style={styles.formInput}
+                onChangeText={text => setEmail(text)}
               />
             </View>
             <View style={styles.formField}>
@@ -37,6 +52,7 @@ export default function Login({navigation}) {
               <TextInput
                 placeholder="Enter password"
                 style={styles.formInput}
+                onChangeText={text => setPassword(text)}
               />
             </View>
             <View style={styles.forgetContainer}>
@@ -44,7 +60,9 @@ export default function Login({navigation}) {
                 <Text style={styles.forget}>Forget Password ?</Text>
               </Pressable>
             </View>
-            <FullSizeBtn label="Sign In" />
+            <Pressable onPress={handleLogin}>
+              <FullSizeBtn label="Sign In" />
+            </Pressable>
             <View style={styles.infoTitle}>
               <Text style={styles.info}>
                 <Text
