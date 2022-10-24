@@ -1,5 +1,5 @@
 import {StyleSheet, Text, View} from 'react-native';
-import {COLORS, FONTS, SIZES} from '../constants/Theme';
+import {COLORS, FONTS, SIZES} from '../../constants/Theme';
 
 const TitleCard = () => {
   return (

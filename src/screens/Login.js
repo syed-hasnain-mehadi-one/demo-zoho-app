@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
-import {FullSizeBtn} from '../components/Button';
+import {FullSizeBtn} from '../components/shared/Button';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
 export default function Login({navigation}) {

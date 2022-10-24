@@ -1,5 +1,5 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {COLORS, FONTS, SIZES} from '../constants/Theme';
+import {COLORS, FONTS, SIZES} from '../../constants/Theme';
 export const PrimaryButton = ({label}) => {
   return (
     <View style={styles.button}>
