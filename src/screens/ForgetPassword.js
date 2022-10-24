@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   ImageBackground,
   Pressable,
@@ -13,9 +14,15 @@ import {FullSizeBtn} from '../components/Button';
 import TitleCard from '../components/TitleCard';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 const ForgetPassword = ({navigation}) => {
+  const handlePress = () => {
+    Alert.alert('OTP Successfully Send', 'Please check your email to get OPT', [
+      {text: 'OK', onPress: () => navigation.navigate('Reset')},
+    ]);
+  };
+
   return (
     <View style={styles.container}>
-      <ImageBackground source={cover} style={styles.image}>
+      <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
         <TitleCard />
         <View style={styles.card}>
           <Pressable onPress={() => navigation.navigate('Login')}>
@@ -30,7 +37,9 @@ const ForgetPassword = ({navigation}) => {
             <Text style={styles.formLabel}>Email</Text>
             <TextInput placeholder="Enter email" style={styles.formInput} />
           </View>
-          <FullSizeBtn label="Genrate password reset link" />
+          <Pressable onPress={handlePress}>
+            <FullSizeBtn label="Genrate password reset link" />
+          </Pressable>
         </View>
       </ImageBackground>
     </View>
@@ -47,6 +56,8 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     backgroundColor: '#a9acb2',
     resizeMode: 'stretch',
+    height: '100%',
+    position: 'absolute',
   },
   back: {
     paddingHorizontal: 16,
