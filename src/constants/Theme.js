@@ -11,6 +11,8 @@ export const COLORS = {
   while: '#ffffff',
   lightBlack: '#4e4f52',
   black: '#1c2433',
+  lightGray: '#d7d9db',
+  gray: '#7e828b',
 };
 
 export const FONTS = {

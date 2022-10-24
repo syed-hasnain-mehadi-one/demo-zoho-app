@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import back from '../assets/images/auth/back-arrow.png';
 import cover from '../assets/images/Vector.jpg';
-import {FullSizeBtn} from '../components/Button';
-import TitleCard from '../components/TitleCard';
+import TitleCard from '../components/authComponents/TitleCard';
+import {FullSizeBtn} from '../components/shared/Button';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 const ForgetPassword = ({navigation}) => {
   const handlePress = () => {
