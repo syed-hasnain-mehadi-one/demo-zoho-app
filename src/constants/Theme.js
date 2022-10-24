@@ -8,11 +8,12 @@ export const SIZES = {
 
 export const COLORS = {
   blue: '#4c26bf',
-  while: '#ffffff',
+  while: '#fff',
   lightBlack: '#4e4f52',
   black: '#1c2433',
   lightGray: '#d7d9db',
   gray: '#7e828b',
+  background: '#f5f6f6',
 };
 
 export const FONTS = {

@@ -9,9 +9,9 @@ import {
   View,
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
-import Footer from '../components/authComponents/Footer';
 import TitleCard from '../components/authComponents/TitleCard';
 import {FullSizeBtn} from '../components/shared/Button';
+import Footer from '../components/shared/Footer';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
 const Signup = ({navigation}) => {
