@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import {FullSizeBtn} from '../components/shared/Button';
+import Footer from '../components/shared/Footer';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
 export default function Login({navigation}) {
@@ -55,9 +56,7 @@ export default function Login({navigation}) {
               </Text>
             </View>
           </View>
-          <View style={styles.footerContainer}>
-            <Text style={styles.footer}>A CedCommerce Inc Product 2022.</Text>
-          </View>
+          <Footer />
         </ImageBackground>
       </View>
     </ScrollView>
