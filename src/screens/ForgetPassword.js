@@ -37,9 +37,10 @@ const ForgetPassword = ({navigation}) => {
             <Text style={styles.formLabel}>Email</Text>
             <TextInput placeholder="Enter email" style={styles.formInput} />
           </View>
-          <Pressable onPress={handlePress}>
-            <FullSizeBtn label="Genrate password reset link" />
-          </Pressable>
+          <FullSizeBtn
+            label="Genrate password reset link"
+            onPress={handlePress}
+          />
         </View>
       </ImageBackground>
     </View>
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     backgroundColor: '#a9acb2',
     resizeMode: 'stretch',
+    width: '100%',
   },
   back: {
     paddingHorizontal: 16,
@@ -101,6 +103,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.while,
     margin: 10,
     borderRadius: 4,
+    width: '100%',
   },
   cardTitle: {
     fontFamily: FONTS.extraBold,

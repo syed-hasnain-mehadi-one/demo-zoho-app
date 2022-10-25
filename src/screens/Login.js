@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import {
   ImageBackground,
   Pressable,
@@ -13,14 +13,23 @@ import cover from '../assets/images/Vector.jpg';
 import {FullSizeBtn} from '../components/shared/Button';
 import Footer from '../components/shared/Footer';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
+import AuthContext from '../context/AuthContext';
 
 export default function Login({navigation}) {
+  const {setUser, user} = useContext(AuthContext);
+  console.log('user', user);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
     try {
       if (!email || !password) return 0;
-      await AsyncStorage.setItem('authData', 'isLogin');
+      const payload = {
+        email,
+        password,
+      };
+      setUser(payload);
+      await AsyncStorage.setItem('authData', JSON.stringify(payload));
     } catch (e) {
       console.log('error', e);
     }
@@ -59,9 +68,7 @@ export default function Login({navigation}) {
                 <Text style={styles.forget}>Forget Password ?</Text>
               </Pressable>
             </View>
-            <Pressable onPress={handleLogin}>
-              <FullSizeBtn label="Sign In" />
-            </Pressable>
+            <FullSizeBtn label="Sign In" onPress={handleLogin} />
             <View style={styles.infoTitle}>
               <Text style={styles.info}>
                 <Text

@@ -1,19 +1,21 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {COLORS, FONTS, SIZES} from '../../constants/Theme';
 
-export const FullSizeBtn = ({label}) => {
+export const FullSizeBtn = ({label, onPress}) => {
   return (
-    <View style={styles.fullBtnContainer}>
-      <Text style={styles.fullBtn}>{label ?? ''}</Text>
-    </View>
+    <TouchableOpacity style={styles.fullBtnContainer}>
+      <Text style={styles.fullBtn} onPress={onPress}>
+        {label ?? ''}
+      </Text>
+    </TouchableOpacity>
   );
 };
 
 export const SmallButton = ({label}) => {
   return (
-    <View style={styles.smallButtonContainer}>
+    <TouchableOpacity style={styles.smallButtonContainer}>
       <Text style={styles.smallButton}>{label ?? ''}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
