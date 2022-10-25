@@ -18,11 +18,9 @@ export default function Login({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
-    console.log('CCCC');
     try {
       if (!email || !password) return 0;
-      const res = await AsyncStorage.setItem('authData', 'isLogin');
-      console.log('res', res);
+      await AsyncStorage.setItem('authData', 'isLogin');
     } catch (e) {
       console.log('error', e);
     }
@@ -52,6 +50,7 @@ export default function Login({navigation}) {
               <TextInput
                 placeholder="Enter password"
                 style={styles.formInput}
+                secureTextEntry={true}
                 onChangeText={text => setPassword(text)}
               />
             </View>
