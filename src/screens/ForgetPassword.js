@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     backgroundColor: '#a9acb2',
     resizeMode: 'stretch',
-    height: '100%',
-    position: 'absolute',
   },
   back: {
     paddingHorizontal: 16,
