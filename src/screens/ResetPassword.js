@@ -1,11 +1,4 @@
-import {
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import TitleCard from '../components/authComponents/TitleCard';
 import {FullSizeBtn} from '../components/shared/Button';
@@ -39,9 +32,7 @@ const ResetPassword = ({navigation}) => {
               style={styles.formInput}
             />
           </View>
-          <Pressable onPress={handlePress}>
-            <FullSizeBtn label="Save" />
-          </Pressable>
+          <FullSizeBtn label="Save" onPress={handlePress} />
         </View>
         <Footer />
       </ImageBackground>

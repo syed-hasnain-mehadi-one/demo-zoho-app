@@ -52,9 +52,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
+    width: '100%',
   },
   cardTitleConatiner: {
     padding: 16,
+    width: '100%',
   },
   cartTitle: {
     fontFamily: FONTS.extraBold,
