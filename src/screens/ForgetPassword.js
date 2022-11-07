@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {
   Alert,
   Image,
@@ -5,15 +6,17 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import back from '../assets/images/auth/back-arrow.png';
 import cover from '../assets/images/Vector.jpg';
 import TitleCard from '../components/authComponents/TitleCard';
 import {FullSizeBtn} from '../components/shared/Button';
+import {PrimaryInput} from '../components/shared/Inputs';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
+
 const ForgetPassword = ({navigation}) => {
+  const [email, setEmail] = useState('');
   const handlePress = () => {
     Alert.alert('OTP Successfully Send', 'Please check your email to get OPT', [
       {text: 'OK', onPress: () => navigation.navigate('Reset')},
@@ -33,10 +36,11 @@ const ForgetPassword = ({navigation}) => {
           <Text style={styles.cardTitle}>
             Enter your email to get the password reset link.
           </Text>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Email</Text>
-            <TextInput placeholder="Enter email" style={styles.formInput} />
-          </View>
+          <PrimaryInput
+            lable="Your Email"
+            placeholder="Enter your email"
+            setData={setEmail}
+          />
           <FullSizeBtn
             label="Genrate password reset link"
             onPress={handlePress}
@@ -103,32 +107,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.while,
     margin: 10,
     borderRadius: 4,
-    width: '100%',
+    width: '95%',
   },
   cardTitle: {
     fontFamily: FONTS.extraBold,
     fontSize: SIZES.medium,
     color: COLORS.black,
     padding: 16,
-  },
-  //form field
-  formField: {
-    paddingHorizontal: 16,
-    paddingTop: 10,
-    color: COLORS.black,
-  },
-  formLabel: {
-    fontFamily: FONTS.semiBold,
-    fontSize: SIZES.medium,
-    color: COLORS.black,
-    paddingBottom: 5,
-  },
-  formInput: {
-    borderWidth: 1,
-    borderColor: COLORS.black,
-    borderRadius: 4,
-    size: SIZES.medium,
-    fontFamily: FONTS.semiBold,
-    color: COLORS.black,
   },
 });
