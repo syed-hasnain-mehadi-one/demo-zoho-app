@@ -6,12 +6,12 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import {FullSizeBtn} from '../components/shared/Button';
 import Footer from '../components/shared/Footer';
+import {PrimaryInput} from '../components/shared/Inputs';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 import AuthContext from '../context/AuthContext';
 
@@ -46,23 +46,17 @@ export default function Login({navigation}) {
           </View>
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Sign In to your account</Text>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Email/Username</Text>
-              <TextInput
-                placeholder="Enter email or username"
-                style={styles.formInput}
-                onChangeText={text => setEmail(text)}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Password</Text>
-              <TextInput
-                placeholder="Enter password"
-                style={styles.formInput}
-                secureTextEntry={true}
-                onChangeText={text => setPassword(text)}
-              />
-            </View>
+            <PrimaryInput
+              lable="Email"
+              placeholder="Enter email or username"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="Password"
+              placeholder="Enter your password"
+              setData={setPassword}
+              isPassword={true}
+            />
             <View style={styles.forgetContainer}>
               <Pressable onPress={() => navigation.navigate('Forget')}>
                 <Text style={styles.forget}>Forget Password ?</Text>
@@ -137,25 +131,6 @@ const styles = StyleSheet.create({
   linkBtn: {
     color: 'blue',
     fontFamily: FONTS.bold,
-  },
-  //form field
-  formField: {
-    paddingHorizontal: 16,
-    paddingTop: 10,
-  },
-  formLabel: {
-    fontFamily: FONTS.semiBold,
-    fontSize: SIZES.medium,
-    color: COLORS.black,
-    paddingBottom: 5,
-  },
-  formInput: {
-    borderWidth: 1,
-    borderColor: COLORS.black,
-    borderRadius: 4,
-    size: SIZES.medium,
-    fontFamily: FONTS.semiBold,
-    color: COLORS.black,
   },
   forgetContainer: {
     paddingHorizontal: 16,

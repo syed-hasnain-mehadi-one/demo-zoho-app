@@ -5,16 +5,17 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import TitleCard from '../components/authComponents/TitleCard';
 import {FullSizeBtn} from '../components/shared/Button';
 import Footer from '../components/shared/Footer';
+import {PrimaryInput} from '../components/shared/Inputs';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 
 const Signup = ({navigation}) => {
+  const [email, setEmail] = useState('');
   const [formData, setFormData] = useState({
     term: false,
     firstName: '',
@@ -33,47 +34,39 @@ const Signup = ({navigation}) => {
           <TitleCard />
           <View style={styles.card}>
             <Text style={styles.cardTitle}>Register/Create a new account</Text>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>First name</Text>
-              <TextInput
-                placeholder="Enter first name"
-                style={styles.formInput}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Last name</Text>
-              <TextInput
-                placeholder="Enter last name"
-                style={styles.formInput}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Username</Text>
-              <TextInput
-                placeholder="Enter username"
-                style={styles.formInput}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Email</Text>
-              <TextInput placeholder="Enter email" style={styles.formInput} />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Password</Text>
-              <TextInput
-                placeholder="Enter password"
-                style={styles.formInput}
-              />
-            </View>
-            <View style={styles.formField}>
-              <Text style={styles.formLabel}>Confirm password</Text>
-              <TextInput
-                placeholder="Enter confirm password"
-                style={styles.formInput}
-              />
-            </View>
+            <PrimaryInput
+              lable="Email"
+              placeholder="Enter your email"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="First name"
+              placeholder="Enter first name"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="Last name"
+              placeholder="Enter last name"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="Username"
+              placeholder="Enter username"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="Password"
+              placeholder="Enter your password"
+              setData={setEmail}
+            />
+            <PrimaryInput
+              lable="Confirm password"
+              placeholder="Enter your confirm password"
+              setData={setEmail}
+            />
             <View style={styles.box}>
               <CheckBox
+                style={{color: COLORS.black}}
                 value={formData?.term}
                 onValueChange={newValue => handleChange('term', newValue)}
               />
@@ -146,26 +139,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
     color: COLORS.black,
     padding: 16,
-  },
-  //form field
-  formField: {
-    paddingHorizontal: 16,
-    paddingTop: 10,
-    color: COLORS.black,
-  },
-  formLabel: {
-    fontFamily: FONTS.semiBold,
-    fontSize: SIZES.medium,
-    color: COLORS.black,
-    paddingBottom: 5,
-  },
-  formInput: {
-    borderWidth: 1,
-    borderColor: COLORS.black,
-    borderRadius: 4,
-    size: SIZES.medium,
-    fontFamily: FONTS.semiBold,
-    color: COLORS.black,
   },
   forgetContainer: {
     paddingHorizontal: 16,

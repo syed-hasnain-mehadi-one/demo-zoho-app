@@ -1,10 +1,13 @@
-import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
+import {useState} from 'react';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import cover from '../assets/images/Vector.jpg';
 import TitleCard from '../components/authComponents/TitleCard';
 import {FullSizeBtn} from '../components/shared/Button';
 import Footer from '../components/shared/Footer';
+import {PrimaryInput} from '../components/shared/Inputs';
 import {COLORS, FONTS, SIZES} from '../constants/Theme';
 const ResetPassword = ({navigation}) => {
+  const [email, setEmail] = useState('');
   const handlePress = () => {
     navigation.navigate('Login');
   };
@@ -13,25 +16,22 @@ const ResetPassword = ({navigation}) => {
       <ImageBackground source={cover} resizeMode="cover" style={styles.image}>
         <TitleCard />
         <View style={styles.card}>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>OTP</Text>
-            <TextInput
-              placeholder="Enter OTP"
-              style={styles.formInput}
-              keyboardType="numeric"
-            />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Password</Text>
-            <TextInput placeholder="Enter password" style={styles.formInput} />
-          </View>
-          <View style={styles.formField}>
-            <Text style={styles.formLabel}>Confirm Password</Text>
-            <TextInput
-              placeholder="Enter confirm password"
-              style={styles.formInput}
-            />
-          </View>
+          <PrimaryInput
+            lable="OTP"
+            placeholder="Enter OTP"
+            keyboard="numeric"
+            setData={setEmail}
+          />
+          <PrimaryInput
+            lable="Password"
+            placeholder="Enter Password"
+            setData={setEmail}
+          />
+          <PrimaryInput
+            lable="Confirm Paassword"
+            placeholder="Enter confirm password"
+            setData={setEmail}
+          />
           <FullSizeBtn label="Save" onPress={handlePress} />
         </View>
         <Footer />
